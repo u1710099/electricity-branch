@@ -9,10 +9,6 @@ export default class CustomerPayment extends Component {
         super(props);
         this.state = {
             billId: this.props.match.params.id,
-            cardNumber: '',
-            cardHolderName: '',
-            cvv: '',
-            cardExpiryDate: '',
             billAmount: '',
             loading: true,
             errors: {}

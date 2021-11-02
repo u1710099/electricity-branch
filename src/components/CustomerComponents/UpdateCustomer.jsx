@@ -8,12 +8,7 @@ export default class UpdateCustomer extends Component {
             id: 0,
             firstName: '',
             lastName: '',
-            email: '',
-            mobile: '',
-            password:'',
-            address: '',
-            state: '',
-            city: '',
+        
             pincode: '',
             isEnabled:'',
             errors: {}
@@ -31,8 +26,8 @@ export default class UpdateCustomer extends Component {
     componentDidMount() {
         let details = localStorage.getItem('customer');
         details = JSON.parse(details);
-        let email = details.email;
-        CustomerServices.getCustIdByEmail(email).then(res => {
+        let citizenCardId = details.citizenCardId;
+        CustomerServices.getCustomerById(citizenCardId).then(res => {
             this.setState({ id: parseInt(res.data) });
             CustomerServices.getCustomerById(this.state.id).then((res) => {
                 let customer = res.data;
@@ -40,12 +35,7 @@ export default class UpdateCustomer extends Component {
                     id: customer.id,
                     firstName: customer.firstName,
                     lastName: customer.lastName,
-                    email: customer.email,
-                    mobile: customer.mobile,
-                    password:customer.password,
-                    address: customer.address,
-                    state: customer.state,
-                    city: customer.city,
+                   
                     pincode: customer.pincode,
                     isEnabled:true
                 });
@@ -245,20 +235,7 @@ export default class UpdateCustomer extends Component {
                                             onChange={this.handleChangeLastName} />
                                         <div className="text-danger">{this.state.errors.lastName}</div>
                                     </div>
-                                    <div className="form-group">
-                                        <label>Email</label>
-                                        <input placeholder="Email" name="email"
-                                            className="form-control" value={this.state.email}
-                                            onChange={this.handleChangeEmail} />
-                                        <div className="text-danger">{this.state.errors.email}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Mobile</label>
-                                        <input placeholder="Mobile" name="mobile"
-                                            className="form-control" value={this.state.mobile}
-                                            onChange={this.handleChangeMobile} />
-                                        <div className="text-danger">{this.state.errors.mobile}</div>
-                                    </div>
+                                  
                                     <div className="form-group">
                                         <label>Address</label>
                                         <input placeholder="Address" name="address"
@@ -266,27 +243,7 @@ export default class UpdateCustomer extends Component {
                                             onChange={this.handleChangeAddress} />
                                         <div className="text-danger">{this.state.errors.address}</div>
                                     </div>
-                                    <div className="form-group">
-                                        <label>State</label>
-                                        <input placeholder="State" name="state"
-                                            className="form-control" value={this.state.state}
-                                            onChange={this.handleChangeState} />
-                                        <div className="text-danger">{this.state.errors.state}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>City</label>
-                                        <input placeholder="City" name="city"
-                                            className="form-control" value={this.state.city}
-                                            onChange={this.handleChangeCity} />
-                                        <div className="text-danger">{this.state.errors.city}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>PinCode</label>
-                                        <input placeholder="PinCode" name="pincode"
-                                            className="form-control" value={this.state.pincode}
-                                            onChange={this.handleChangePinCode} />
-                                        <div className="text-danger">{this.state.errors.pincode}</div>
-                                    </div>
+                                  
                                     <button className="btn btn-success" onClick={this.updateCustomer}>Update</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </form>

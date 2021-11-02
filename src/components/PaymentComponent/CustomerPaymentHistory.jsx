@@ -18,10 +18,10 @@ export default class CustomerPaymentHistory extends Component{
 
         let details = localStorage.getItem('customer');
         details = JSON.parse(details);
-        let email = details.email;
+        let citizenCardId = details.citizenCardId;
 
 
-        PayementService.getPaymentOfCustomer(email).then((res) => {
+        PayementService.getPaymentOfCustomer(citizenCardId).then((res) => {
             this.setState({ payments: res.data });
         });
     }

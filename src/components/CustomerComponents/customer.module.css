@@ -1,11 +1,12 @@
 .cardItem {
-    
-    .buttonContainer {
-        position: absolute;
-        bottom: 5%;
-        left: 5%;
-        opacity: 100 !important;
-    }
+    /*position: relative;*/
+}
+
+.cardItem .buttonContainer {
 
 }
 
+.button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

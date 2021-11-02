@@ -36,8 +36,8 @@ export default class AddMoreDetails extends Component {
     componentDidMount() {
         let data = localStorage.getItem('customer');
         data = JSON.parse(data);
-        let email = data.email;
-        CustomerServices.getCustIdByEmail(email).then(res => {
+        let citizenCardId = data.citizenCardId;
+        CustomerServices.getCustIdByEmail(citizenCardId).then(res => {
             this.setState({ id: parseInt(res.data) });
 
         });
